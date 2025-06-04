@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Plant Decor Store – Project Showcase</title>
+  <link rel="stylesheet" href="../styles.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    /* Project Showcase Section */
+    .project-showcase {
+      padding: 80px 20px;
+      background-color: var(--bg-color, #ffffff);
+      color: var(--text-color, #222);
+      text-align: center;
+      margin-top: 70px;
+    }
+
+    .project-showcase h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .project-image {
+    width: 100%;
+    height: 100%;
+    max-width: 900px;
+    max-height: 450px;
+    border-radius: 10px;
+    margin-bottom: 50px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 4);
+    
+  }
+
+  .dark-mode .project-image {
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 4);
+  }
+
+    .project-showcase p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+
+    .tech-stack {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+
+    .tech-stack span {
+      background-color: #dff0dc;
+      color: #2f7a37;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-top: 10px;
+    }
+
+      .features {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    padding: 80px 20px;
+  }
+
+  .feature-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1300px;
+    margin: auto;
+    gap: 40px;
+    text-align: left;
+  }
+
+  .feature-card.reverse {
+    flex-direction: row-reverse;
+  }
+
+  .feature-card img {
+    width: 100%;
+    max-width: 600px; /* Increased image size */
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .dark-mode .feature-card img {
+    box-shadow: 0 6px 18px rgba(255, 255, 255, 0.2);
+  }
+
+  .feature-content {
+    flex: 1;
+    max-width: 600px;
+    padding: 20px;
+  }
+
+  .feature-content h3 {
+    font-size: 28px; /* Larger heading */
+    margin-bottom: 15px;
+    color: var(--text-color, #222);
+  }
+
+  .feature-content p {
+    font-size: 18px; /* Larger text */
+    color: var(--text-color, #444);
+    line-height: 1.8;
+  }
+
+  .dark-mode .feature-content h3,
+  .dark-mode .feature-content p {
+    color: #eee;
+  }
+
+  @media (max-width: 768px) {
+    .feature-card,
+    .feature-card.reverse {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .feature-card img {
+      max-width: 100%;
+    }
+
+    .feature-content {
+      max-width: 100%;
+    }
+  }
+
+    /* Dark Mode Support */
+    .dark-mode .project-showcase {
+      background-color: #121212;
+      color: #eee;
+    }
+
+    .dark-mode .tech-stack span {
+      background-color: #2f4f4f;
+      color: #c3f9c8;
+    }
+
+    .dark-mode .feature-card {
+      background-color: #1e1e1e;
+      box-shadow: 0 2px 10px rgba(255, 255, 255, 0.05);
+    }
+
+    .dark-mode .feature-content h3 {
+      color: #a1ffaf;
+    }
+
+    .dark-mode .feature-content p {
+      color: #ccc;
+    }
+
+
+    .view-code-btn {
+  margin-top: -5px;
+  margin-bottom: 70px;
+  text-align: center;
+}
+
+.view-code-btn a {
+  display: inline-block;
+  background-color: #24292e;
+  color: #fff;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.view-code-btn a i {
+  margin-right: 8px;
+  font-size: 18px;
+  vertical-align: middle;
+}
+
+.view-code-btn a:hover {
+  background-color: #444c56;
+}
+
+.dark-mode .view-code-btn a {
+  background-color: #ffffff;
+  color: #000;
+}
+
+.dark-mode .view-code-btn a:hover {
+  background-color: #e5e5e5;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="#" class="logo">Isha<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#skills">Skills</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+      <div class="hamburger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+
+      <div class="theme-toggle">
+        <input type="checkbox" id="theme-toggle-checkbox">
+        <label for="theme-toggle-checkbox" class="theme-toggle-label">
+          <i class="fas fa-moon"></i>
+          <i class="fas fa-sun"></i>
+          <span class="theme-toggle-ball"></span>
+        </label>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Project Showcase Section -->
+  <section class="project-showcase container">
+    <h1>🌿 Plant Decor Store</h1>
+    <p>A modern eCommerce site for purchasing indoor & outdoor plants, pots, and decor.</p>
+    <img src="../essentials/plantdecor/home.png" alt="Home" class="project-image">
+
+    <div class="view-code-btn">
+  <a href="https://github.com/Isha-Lama/PlantDecor" target="_blank">
+    <i class="fab fa-github"></i> View Code
+  </a>
+</div>
+
+
+    <h2>🔧 Technologies Used</h2>
+    <div class="tech-stack">
+      <span>Node.js</span>
+      <span>React.js</span>
+      <span>Express</span>
+      <span>MongoDB</span>
+      <span>eSewa Integration</span>
+    </div><br><br>
+
+    <h2 style="font-size: 30px;">✨ Features</h2>
+<div class="features">
+  <div class="feature-card">
+    <img src="../essentials/plantdecor/product.png" alt="Product Listing">
+    <div class="feature-content">
+      <h3>Browse Products</h3>
+      <p>Users can browse a variety of plants and décor items with filters by category, price, or popularity.</p>
+    </div>
+  </div>
+
+  <div class="feature-card reverse">
+    <img src="../essentials/plantdecor/cart.png" alt="Add to Cart">
+    <div class="feature-content">
+      <h3>Cart System</h3>
+      <p>Real-time cart updates, quantity management, and a smooth checkout flow ensure a great shopping experience.</p>
+    </div>
+  </div>
+
+    <div class="feature-card">
+    <img src="../essentials/plantdecor/inspo.png" alt="Responsive Design">
+    <div class="feature-content">
+      <h3>Room Inspirations</h3>
+<p>Explore stunning room decor inspirations that blend greenery with modern design—perfect for creating a calming, beautiful space you'll love coming home to.</p>
+
+    </div>
+  </div>
+
+  <div class="feature-card reverse">
+    <img src="../essentials/plantdecor/esewa.png" alt="eSewa Payment">
+    <div class="feature-content">
+      <h3>eSewa Integration</h3>
+      <p>Secure and verified eSewa payment gateway allows users to complete their purchases quickly and safely.</p>
+    </div>
+  </div>
+
+
+</div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-about">
+          <a href="#" class="logo">Isha<span>.</span></a>
+          <p>Computer Science student passionate about creating digital experiences that matter.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact Info</h4>
+          <ul>
+            <li><i class="fas fa-envelope"></i> lamaisha707@gmail.com</li>
+            <li><i class="fas fa-phone-alt"></i> +977 98XXXXXXX</li>
+            <li><i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 Isha Lama. All rights reserved.</p>
+        <div class="footer-social">
+          <a href="https://github.com/Isha-Lama/" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+    <script src="../script.js"></script>
+</body>
+</html>
