@@ -119,68 +119,68 @@ document.addEventListener('DOMContentLoaded', function() {
         heroImage.style.transition = 'all 0.8s ease 0.3s';
     }
 
-
     // Typing effect for hero subtitle
-const heroSubtitle = document.querySelector('.hero-subtitle');
-const titles = [
-    "Computer Science Student",
-    "Web Developer", 
-    "UI/UX Designer",
-    "Creative Coder"
-];
-let titleIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-let typingSpeed = 100; // Adjust speed here (lower = faster)
+    const heroSubtitle = document.querySelector('.hero-subtitle');
+    const titles = [
+        "Computer Science Student",
+        "Web Developer", 
+        "UI/UX Designer",
+        "Creative Coder"
+    ];
+    let titleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 100; // Adjust speed here (lower = faster)
 
-function typeWriter() {
-    const currentTitle = titles[titleIndex];
-    
-    if (isDeleting) {
-        // Deleting phase
-        heroSubtitle.textContent = currentTitle.substring(0, charIndex - 1);
-        charIndex--;
-        typingSpeed = 50; // Faster when deleting
-    } else {
-        // Typing phase
-        heroSubtitle.textContent = currentTitle.substring(0, charIndex + 1);
-        charIndex++;
-        typingSpeed = 100; // Normal speed when typing
-    }
-
-    // Determine next action
-    if (!isDeleting && charIndex === currentTitle.length) {
-        // Pause at end of typing
-        isDeleting = true;
-        typingSpeed = 1500; // Pause before deleting
-    } else if (isDeleting && charIndex === 0) {
-        // Move to next title
-        isDeleting = false;
-        titleIndex = (titleIndex + 1) % titles.length;
-        typingSpeed = 500; // Pause before typing next
-    }
-
-    setTimeout(typeWriter, typingSpeed);
-}
-
-// Start the effect when page loads
-window.addEventListener('load', () => {
-    setTimeout(typeWriter, 1000); // Initial delay
-});
-
-    // Simple Intersection Observer
-const skillsSection = document.querySelector('#skills');
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('animate');
-            observer.unobserve(entry.target);
+    function typeWriter() {
+        const currentTitle = titles[titleIndex];
+        
+        if (isDeleting) {
+            // Deleting phase
+            heroSubtitle.textContent = currentTitle.substring(0, charIndex - 1);
+            charIndex--;
+            typingSpeed = 50; // Faster when deleting
+        } else {
+            // Typing phase
+            heroSubtitle.textContent = currentTitle.substring(0, charIndex + 1);
+            charIndex++;
+            typingSpeed = 100; // Normal speed when typing
         }
-    });
-}, { threshold: 0.1 });
 
-observer.observe(skillsSection);
+        // Determine next action
+        if (!isDeleting && charIndex === currentTitle.length) {
+            // Pause at end of typing
+            isDeleting = true;
+            typingSpeed = 1500; // Pause before deleting
+        } else if (isDeleting && charIndex === 0) {
+            // Move to next title
+            isDeleting = false;
+            titleIndex = (titleIndex + 1) % titles.length;
+            typingSpeed = 500; // Pause before typing next
+        }
+
+        setTimeout(typeWriter, typingSpeed);
+    }
+
+    // Start the effect when page loads
+    window.addEventListener('load', () => {
+        setTimeout(typeWriter, 1000); // Initial delay
+    });
+
+    // Simple Intersection Observer for skills section
+    const skillsSection = document.querySelector('#skills');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    if (skillsSection) {
+        observer.observe(skillsSection);
+    }
 
     // Section animations
     const allSections = document.querySelectorAll('section:not(#home)');
@@ -273,6 +273,54 @@ observer.observe(skillsSection);
         sectionObserver.observe(section);
     });
 
+    // Certificate Modal functionality
+    const certificateImage = document.querySelector('.certificate-image img');
+    if (certificateImage) {
+        // Create modal element
+        const modal = document.createElement('div');
+        modal.className = 'certificate-modal';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <img src="" alt="Certificate" class="modal-image">
+            </div>
+        `;
+        document.body.appendChild(modal);
+        
+        // Get modal elements
+        const modalImage = document.querySelector('.modal-image');
+        const closeModal = document.querySelector('.close-modal');
+        
+        // Open modal when certificate image is clicked
+        certificateImage.addEventListener('click', function() {
+            modalImage.src = this.src;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        });
+        
+        // Close modal when X is clicked
+        closeModal.addEventListener('click', function() {
+            modal.classList.remove('active');
+            document.body.style.overflow = ''; // Re-enable scrolling
+        });
+        
+        // Close modal when clicking outside the image
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = ''; // Re-enable scrolling
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+                document.body.style.overflow = ''; // Re-enable scrolling
+            }
+        });
+    }
+
     // Page load animations
     window.addEventListener('load', () => {
         document.body.classList.remove('loading');
@@ -300,12 +348,6 @@ observer.observe(skillsSection);
 
     // Loading screen removal with delay
     setTimeout(() => {
-        const loadingScreen = document.querySelector('body.loading::before');
-        if (loadingScreen) {
-            loadingScreen.style.opacity = '0';
-            setTimeout(() => {
-                document.body.classList.remove('loading');
-            }, 500);
-        }
+        document.body.classList.remove('loading');
     }, 1000);
 });
