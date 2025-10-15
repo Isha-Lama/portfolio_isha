@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const titles = [
         "Computer Science Student",
         "Web Developer", 
-        "UI/UX Designer",
+       
         "Creative Coder"
     ];
     let titleIndex = 0;
