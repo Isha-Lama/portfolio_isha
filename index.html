@@ -4,17 +4,195 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="Isha Ghising – Portfolio">
-<meta name="description" content="Personal website of Isha Ghising. Web developer, designer, and student. View projects, skills, and contact info.">
-<meta name="keywords" content="Isha, Isha Ghising, ishaghising, isha ghising, web developer, portfolio, student">
-<meta name="author" content="Isha Ghising">
-<meta name="robots" content="index, follow">
+    <meta name="description" content="Personal website of Isha Ghising. Web developer, designer, and student. View projects, skills, and contact info.">
+    <meta name="keywords" content="Isha, Isha Ghising, ishaghising, isha ghising, web developer, portfolio, student">
+    <meta name="author" content="Isha Ghising">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0b1026">
 
-    <title>Isha Lama | Portfolio</title>
+    <title>Isha Ghising | Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- tsParticles engine for atmospheric background particles -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
 </head>
 <body>
+    <!-- ============================================================
+         SCENE LAYER 1 — SKY, SUN, MOON, STARS, CLOUDS
+         ============================================================ -->
+    <div class="sky-background" aria-hidden="true">
+        <!-- Base sky wash + horizon light (sunset / moonrise band) -->
+        <div class="sky-gradient"></div>
+        <div class="horizon-glow"></div>
+
+        <!-- DAY ELEMENTS -->
+        <div class="sun">
+            <div class="sun-core"></div>
+            <div class="sun-rays"></div>
+            <div class="sun-halo"></div>
+        </div>
+
+        <div class="cloud cloud-1"><span></span><span></span><span></span></div>
+        <div class="cloud cloud-2"><span></span><span></span><span></span></div>
+        <div class="cloud cloud-3"><span></span><span></span><span></span></div>
+        <div class="cloud cloud-4"><span></span><span></span><span></span></div>
+        <div class="cloud cloud-5"><span></span><span></span><span></span></div>
+
+        <div class="greenery-landscape"></div>
+
+        <!-- NIGHT ELEMENTS -->
+        <div class="moon">
+            <div class="moon-crater crater-1"></div>
+            <div class="moon-crater crater-2"></div>
+            <div class="moon-crater crater-3"></div>
+            <div class="moon-halo"></div>
+        </div>
+
+        <div class="stars">
+            <span class="star" style="--x:4%;  --y:12%; --s:2px;   --d:3.1s; --delay:0s"></span>
+            <span class="star" style="--x:11%; --y:26%; --s:1.5px; --d:4.4s; --delay:.6s"></span>
+            <span class="star" style="--x:17%; --y:8%;  --s:2.5px; --d:2.8s; --delay:1.2s"></span>
+            <span class="star" style="--x:23%; --y:33%; --s:1.5px; --d:5.2s; --delay:.3s"></span>
+            <span class="star" style="--x:29%; --y:16%; --s:2px;   --d:3.6s; --delay:1.8s"></span>
+            <span class="star" style="--x:35%; --y:5%;  --s:1.5px; --d:4.9s; --delay:.9s"></span>
+            <span class="star" style="--x:41%; --y:24%; --s:2.5px; --d:3.3s; --delay:2.4s"></span>
+            <span class="star" style="--x:47%; --y:38%; --s:1.5px; --d:4.1s; --delay:.2s"></span>
+            <span class="star" style="--x:53%; --y:10%; --s:2px;   --d:5.5s; --delay:1.5s"></span>
+            <span class="star" style="--x:58%; --y:29%; --s:1.5px; --d:3.8s; --delay:2.1s"></span>
+            <span class="star" style="--x:64%; --y:18%; --s:2.5px; --d:4.6s; --delay:.7s"></span>
+            <span class="star" style="--x:69%; --y:6%;  --s:1.5px; --d:3.2s; --delay:1.9s"></span>
+            <span class="star" style="--x:74%; --y:35%; --s:2px;   --d:5.1s; --delay:.4s"></span>
+            <span class="star" style="--x:79%; --y:21%; --s:1.5px; --d:4.3s; --delay:2.7s"></span>
+            <span class="star" style="--x:84%; --y:9%;  --s:2.5px; --d:3.5s; --delay:1.1s"></span>
+            <span class="star" style="--x:88%; --y:31%; --s:1.5px; --d:4.8s; --delay:.5s"></span>
+            <span class="star" style="--x:92%; --y:15%; --s:2px;   --d:3.9s; --delay:2.2s"></span>
+            <span class="star" style="--x:96%; --y:27%; --s:1.5px; --d:5.4s; --delay:1.4s"></span>
+            <span class="star" style="--x:8%;  --y:42%; --s:1.5px; --d:4.2s; --delay:2.9s"></span>
+            <span class="star" style="--x:31%; --y:46%; --s:2px;   --d:3.4s; --delay:.8s"></span>
+            <span class="star" style="--x:61%; --y:44%; --s:1.5px; --d:5.0s; --delay:1.7s"></span>
+            <span class="star" style="--x:86%; --y:48%; --s:2px;   --d:4.0s; --delay:2.5s"></span>
+        </div>
+
+        <div class="meteor meteor-1"></div>
+        <div class="meteor meteor-2"></div>
+        <div class="meteor meteor-3"></div>
+        <div class="meteor meteor-4"></div>
+
+        <div class="pine-trees-landscape"></div>
+    </div>
+
+    <!-- ============================================================
+         SCENE LAYER 2 — GROUND SHADOW + TREE SILHOUETTES (fixed to
+         the bottom of the viewport, sits above the sky, below content)
+         ============================================================ -->
+    <div class="scene-foreground" aria-hidden="true">
+        <!-- Soft greyish cast shadow that grounds the whole scene -->
+        <div class="ground-shadow"></div>
+        <div class="ground-mist"></div>
+
+        <!-- Far treeline: lighter, hazier, slower parallax -->
+        <svg class="tree-line tree-line-far" viewBox="0 0 1440 240" preserveAspectRatio="xMidYMax slice">
+            <defs>
+                <!-- Reusable silhouettes: origin sits at the tree base -->
+                <g id="pine">
+                    <rect x="-5" y="-26" width="10" height="28" rx="2"></rect>
+                    <polygon points="-38,-20 0,-78 38,-20"></polygon>
+                    <polygon points="-31,-50 0,-108 31,-50"></polygon>
+                    <polygon points="-23,-82 0,-142 23,-82"></polygon>
+                    <polygon points="-14,-116 0,-168 14,-116"></polygon>
+                </g>
+                <g id="pine-slim">
+                    <rect x="-4" y="-22" width="8" height="24" rx="2"></rect>
+                    <polygon points="-26,-16 0,-66 26,-16"></polygon>
+                    <polygon points="-21,-44 0,-96 21,-44"></polygon>
+                    <polygon points="-14,-74 0,-132 14,-74"></polygon>
+                </g>
+            </defs>
+
+            <!-- rolling ridge the far trees stand on -->
+            <path class="ridge ridge-far"
+                  d="M0,240 L0,196 C90,180 150,190 230,184 C320,177 380,164 470,170 C560,176 620,192 710,188 C800,184 860,168 950,172 C1040,176 1100,190 1190,186 C1270,182 1340,172 1440,180 L1440,240 Z"></path>
+
+            <g class="trees-far">
+                <use href="#pine-slim"   transform="translate(60,198)  scale(.62)"></use>
+                <use href="#pine"        transform="translate(140,192) scale(.55)"></use>
+                <use href="#pine-slim"   transform="translate(205,186) scale(.7)"></use>
+                <use href="#pine-slim"   transform="translate(300,180) scale(.5)"></use>
+                <use href="#pine"        transform="translate(380,172) scale(.6)"></use>
+                <use href="#pine-slim"   transform="translate(450,172) scale(.5)"></use>
+                <use href="#pine"        transform="translate(545,178) scale(.66)"></use>
+                <use href="#pine-slim"   transform="translate(640,186) scale(.46)"></use>
+                <use href="#pine-slim"   transform="translate(715,188) scale(.6)"></use>
+                <use href="#pine"        transform="translate(800,182) scale(.52)"></use>
+                <use href="#pine-slim"   transform="translate(880,172) scale(.68)"></use>
+                <use href="#pine-slim"   transform="translate(975,174) scale(.5)"></use>
+                <use href="#pine"        transform="translate(1060,180) scale(.58)"></use>
+                <use href="#pine-slim"   transform="translate(1135,186) scale(.64)"></use>
+                <use href="#pine"        transform="translate(1225,184) scale(.54)"></use>
+                <use href="#pine-slim"   transform="translate(1310,180) scale(.44)"></use>
+                <use href="#pine-slim"   transform="translate(1390,180) scale(.6)"></use>
+            </g>
+        </svg>
+
+        <!-- Near treeline: darkest, sharpest, sits right on the viewport edge -->
+        <svg class="tree-line tree-line-near" viewBox="0 0 1440 240" preserveAspectRatio="xMidYMax slice">
+            <path class="ridge ridge-near"
+                  d="M0,240 L0,222 C120,214 200,228 300,222 C400,216 470,206 570,212 C670,218 740,230 840,226 C940,222 1010,210 1110,214 C1210,218 1330,228 1440,220 L1440,240 Z"></path>
+
+            <g class="trees-near">
+                <use href="#pine"      transform="translate(25,228)   scale(1.05)"></use>
+                <use href="#pine-slim" transform="translate(115,226)  scale(.85)"></use>
+                <use href="#pine-slim" transform="translate(215,224)  scale(.78)"></use>
+                <use href="#pine"      transform="translate(330,222)  scale(.95)"></use>
+                <use href="#pine-slim" transform="translate(410,230)  scale(1)"></use>
+                <use href="#pine-slim" transform="translate(495,216)  scale(1.1)"></use>
+                <use href="#pine"      transform="translate(600,214)  scale(.8)"></use>
+                <use href="#pine-slim" transform="translate(700,220)  scale(.9)"></use>
+                <use href="#pine-slim" transform="translate(790,228)  scale(1.2)"></use>
+                <use href="#pine-slim" transform="translate(865,226)  scale(.92)"></use>
+                <use href="#pine"      transform="translate(965,222)  scale(1.12)"></use>
+                <use href="#pine-slim" transform="translate(1075,216) scale(.72)"></use>
+                <use href="#pine-slim" transform="translate(1160,222) scale(1.05)"></use>
+                <use href="#pine"      transform="translate(1250,220) scale(.88)"></use>
+                <use href="#pine-slim" transform="translate(1345,222) scale(1.15)"></use>
+                <use href="#pine"      transform="translate(1425,226) scale(.95)"></use>
+            </g>
+        </svg>
+    </div>
+
+    <!-- ============================================================
+         SCENE LAYER 3 — INDEPENDENT WHITE GLOWING PARTICLES
+         Unlinked from any card or element; they float on their own.
+         ============================================================ -->
+    <div class="glow-dots" aria-hidden="true">
+        <span class="glow-dot" style="--x:6%;  --y:78%; --s:4px; --d:17s; --delay:0s;   --drift:28px"></span>
+        <span class="glow-dot" style="--x:13%; --y:52%; --s:3px; --d:22s; --delay:2.4s; --drift:-34px"></span>
+        <span class="glow-dot" style="--x:21%; --y:88%; --s:5px; --d:19s; --delay:1.1s; --drift:40px"></span>
+        <span class="glow-dot" style="--x:27%; --y:64%; --s:3px; --d:25s; --delay:3.8s; --drift:-22px"></span>
+        <span class="glow-dot" style="--x:34%; --y:41%; --s:4px; --d:20s; --delay:.6s;  --drift:30px"></span>
+        <span class="glow-dot" style="--x:42%; --y:83%; --s:3px; --d:23s; --delay:5.2s; --drift:-38px"></span>
+        <span class="glow-dot" style="--x:49%; --y:57%; --s:5px; --d:18s; --delay:1.9s; --drift:26px"></span>
+        <span class="glow-dot" style="--x:56%; --y:73%; --s:3px; --d:26s; --delay:4.4s; --drift:-30px"></span>
+        <span class="glow-dot" style="--x:63%; --y:46%; --s:4px; --d:21s; --delay:.3s;  --drift:36px"></span>
+        <span class="glow-dot" style="--x:70%; --y:86%; --s:3px; --d:24s; --delay:6.1s; --drift:-24px"></span>
+        <span class="glow-dot" style="--x:77%; --y:61%; --s:5px; --d:19s; --delay:2.8s; --drift:32px"></span>
+        <span class="glow-dot" style="--x:84%; --y:79%; --s:3px; --d:27s; --delay:3.3s; --drift:-40px"></span>
+        <span class="glow-dot" style="--x:90%; --y:50%; --s:4px; --d:20s; --delay:1.5s; --drift:22px"></span>
+        <span class="glow-dot" style="--x:95%; --y:84%; --s:3px; --d:23s; --delay:5.7s; --drift:-28px"></span>
+        <span class="glow-dot" style="--x:17%; --y:34%; --s:3px; --d:28s; --delay:4.9s; --drift:34px"></span>
+        <span class="glow-dot" style="--x:45%; --y:26%; --s:4px; --d:22s; --delay:2.1s; --drift:-26px"></span>
+        <span class="glow-dot" style="--x:73%; --y:30%; --s:3px; --d:25s; --delay:6.6s; --drift:30px"></span>
+        <span class="glow-dot" style="--x:88%; --y:22%; --s:4px; --d:21s; --delay:3.0s; --drift:-32px"></span>
+    </div>
+
+    <!-- Canvas container for particle effect -->
+    <div id="bg-canvas"></div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
@@ -33,13 +211,13 @@
             </div>
 
             <div class="theme-toggle">
-    <input type="checkbox" id="theme-toggle-checkbox">
-    <label for="theme-toggle-checkbox" class="theme-toggle-label">
-        <i class="fas fa-moon"></i>
-        <i class="fas fa-sun"></i>
-        <span class="theme-toggle-ball"></span>
-    </label>
-</div>
+                <input type="checkbox" id="theme-toggle">
+                <label for="theme-toggle" class="theme-toggle-label">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                    <span class="theme-toggle-ball"></span>
+                </label>
+            </div>
         </div>
     </nav>
 
@@ -47,8 +225,9 @@
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Hello, World! <br>It's <span>Isha Ghising</span></h1>
-                <h2 class="hero-subtitle"></h2> <!-- Empty element for the effect -->
+                <span class="hero-badge"><i class="fas fa-circle status-dot"></i> Open to opportunities</span>
+                <h1 class="hero-title">Hello, World! <br>It's <span class="accent-text">Isha Ghising</span></h1>
+                <h2 class="hero-subtitle"><span id="typed-text"></span></h2>
                 <p class="hero-description">Passionate about building engaging digital experiences through code and design.</p>
                 <div class="hero-buttons">
                     <a href="#projects" class="btn btn-primary">View My Work</a>
@@ -57,13 +236,10 @@
             </div>
             <div class="hero-image">
                 <div class="image-wrapper">
-                    <div class="glow"></div>
                     <div class="dots"></div>
-                    <img src="essentials/my.png" alt="Isha Lama" class="profile-img">
+                    <img src="essentials/my.png" alt="Isha Ghising" class="profile-img">
                 </div>
             </div>
-
-            
         </div>
         <div class="scroll-indicator">
             <span>Scroll Down</span>
@@ -75,15 +251,15 @@
     <section id="about" class="about">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">About <span>Me</span></h2>
+                <h2 class="section-title" data-text="About Me">About <span>Me</span></h2>
                 <div class="section-divider"></div>
             </div>
             <div class="about-content">
                 <div class="about-image">
-                    <img src="essentials/about.png" alt="Isha Lama">
+                    <img src="essentials/about.png" alt="Isha Ghising">
                 </div>
                 <div class="about-text">
-                    <h3>Computer Science Student & Passionate Developer</h3>
+                    <h3>Computer Science Student &amp; Passionate Developer</h3>
                     <p>I'm a Computer Science student with a strong passion for software development, UX/UI design, and creating engaging interactive web experiences. I believe in the power of technology to solve problems and create meaningful connections.</p>
                     <p>My journey in tech is driven by curiosity and a commitment to lifelong learning. I'm always exploring new frameworks, tools, and concepts to expand my skill set and contribute meaningfully to projects.</p>
                     <div class="about-details">
@@ -105,125 +281,89 @@
                         </div>
                     </div>
                     <a href="essentials/cv.pdf" download="My_CV.pdf" class="btn btn-primary">Download CV</a>
-
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-<section id="skills" class="skills">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">My <span>Skills</span></h2>
-            <div class="section-divider"></div>
-            <p class="section-subtitle">Technologies I work with</p>
-        </div>
-        
-        <div class="skills-cloud">
-            <!-- Programming Languages -->
-            <div class="skill-item" data-skill="JavaScript">
-                <div class="skill-logo">
-                    <i class="fab fa-js"></i>
-                </div>
-                <span class="skill-name">JavaScript</span>
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-text="My Skills">My <span>Skills</span></h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Technologies I work with</p>
             </div>
-            
-            <div class="skill-item" data-skill="Python">
-                <div class="skill-logo">
-                    <i class="fab fa-python"></i>
+
+            <div class="skills-cloud">
+                <div class="skill-item" data-skill="JavaScript">
+                    <div class="skill-logo"><i class="fab fa-js"></i></div>
+                    <span class="skill-name">JavaScript</span>
                 </div>
-                <span class="skill-name">Python</span>
-            </div>
-            
-            <div class="skill-item" data-skill="C++">
-                <div class="skill-logo">
-                    <i class="fas fa-file-code"></i>
+                <div class="skill-item" data-skill="Python">
+                    <div class="skill-logo"><i class="fab fa-python"></i></div>
+                    <span class="skill-name">Python</span>
                 </div>
-                <span class="skill-name">C++</span>
-            </div>
-            
-            <!-- Web Technologies -->
-            <div class="skill-item" data-skill="HTML5">
-                <div class="skill-logo">
-                    <i class="fab fa-html5"></i>
+                <div class="skill-item" data-skill="C++">
+                    <div class="skill-logo"><i class="fas fa-file-code"></i></div>
+                    <span class="skill-name">C++</span>
                 </div>
-                <span class="skill-name">HTML5</span>
-            </div>
-            
-            <div class="skill-item" data-skill="CSS3">
-                <div class="skill-logo">
-                    <i class="fab fa-css3-alt"></i>
+                <div class="skill-item" data-skill="HTML5">
+                    <div class="skill-logo"><i class="fab fa-html5"></i></div>
+                    <span class="skill-name">HTML5</span>
                 </div>
-                <span class="skill-name">CSS3</span>
-            </div>
-            
-            <div class="skill-item" data-skill="React">
-                <div class="skill-logo">
-                    <i class="fab fa-react"></i>
+                <div class="skill-item" data-skill="CSS3">
+                    <div class="skill-logo"><i class="fab fa-css3-alt"></i></div>
+                    <span class="skill-name">CSS3</span>
                 </div>
-                <span class="skill-name">React</span>
-            </div>
-            
-            <div class="skill-item" data-skill="Node.js">
-                <div class="skill-logo">
-                    <i class="fab fa-node-js"></i>
+                <div class="skill-item" data-skill="React">
+                    <div class="skill-logo"><i class="fab fa-react"></i></div>
+                    <span class="skill-name">React</span>
                 </div>
-                <span class="skill-name">Node.js</span>
-            </div>
-            
-            <!-- Databases -->
-            <div class="skill-item" data-skill="MongoDB">
-                <div class="skill-logo">
-                    <i class="fas fa-database"></i>
+                <div class="skill-item" data-skill="Node.js">
+                    <div class="skill-logo"><i class="fab fa-node-js"></i></div>
+                    <span class="skill-name">Node.js</span>
                 </div>
-                <span class="skill-name">MongoDB</span>
-            </div>
-            
-            <div class="skill-item" data-skill="MySQL">
-                <div class="skill-logo">
-                    <i class="fas fa-database"></i>
+                <div class="skill-item" data-skill="MongoDB">
+                    <div class="skill-logo"><i class="fas fa-database"></i></div>
+                    <span class="skill-name">MongoDB</span>
                 </div>
-                <span class="skill-name">MySQL</span>
-            </div>
-            
-            <!-- Tools & Design -->
-            <div class="skill-item" data-skill="Git">
-                <div class="skill-logo">
-                    <i class="fab fa-git-alt"></i>
+                <div class="skill-item" data-skill="MySQL">
+                    <div class="skill-logo"><i class="fas fa-database"></i></div>
+                    <span class="skill-name">MySQL</span>
                 </div>
-                <span class="skill-name">Git</span>
-            </div>
-            
-            <div class="skill-item" data-skill="Figma">
-                <div class="skill-logo">
-                    <i class="fab fa-figma"></i>
+                <div class="skill-item" data-skill="Git">
+                    <div class="skill-logo"><i class="fab fa-git-alt"></i></div>
+                    <span class="skill-name">Git</span>
                 </div>
-                <span class="skill-name">Figma</span>
+                <div class="skill-item" data-skill="Figma">
+                    <div class="skill-logo"><i class="fab fa-figma"></i></div>
+                    <span class="skill-name">Figma</span>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">My <span>Projects</span></h2>
+                <h2 class="section-title" data-text="My Projects">My <span>Projects</span></h2>
                 <div class="section-divider"></div>
                 <p class="section-subtitle">Here are some of my featured projects that showcase my skills and creativity</p>
             </div>
             <div class="projects-grid">
                 <div class="project-card">
+                    <span class="card-glare"></span>
                     <div class="project-image">
-                        <img src="essentials/plant.png" alt="Plant & Decor Store">
+                        <img src="essentials/plant.png" alt="Plant &amp; Decor Store">
                         <div class="project-links">
-                            <a href="https://github.com/Isha-Lama/PlantDecor" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://github.com/Isha-Lama/PlantDecor" target="_blank" rel="noopener" aria-label="Plant &amp; Decor Store on GitHub"><i class="fab fa-github"></i></a>
                             <a href="projects/plant.html" class="view-project">View Project</a>
                         </div>
                     </div>
                     <div class="project-info">
-                        <h3>Plant & Decor Store</h3>
+                        <h3>Plant &amp; Decor Store</h3>
                         <p>An eCommerce platform for purchasing indoor plants and home decor items with a clean, nature-inspired design.</p>
                         <div class="project-tech">
                             <span>React</span>
@@ -233,10 +373,11 @@
                     </div>
                 </div>
                 <div class="project-card">
+                    <span class="card-glare"></span>
                     <div class="project-image">
                         <img src="essentials/flourish.png" alt="Flourish e-Learning">
                         <div class="project-links">
-                            <a href="https://github.com/Isha-Lama/Hackaverse-Project" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://github.com/Isha-Lama/Hackaverse-Project" target="_blank" rel="noopener" aria-label="Flourish e-Learning on GitHub"><i class="fab fa-github"></i></a>
                             <a href="projects/flourish.html" class="view-project">View Project</a>
                         </div>
                     </div>
@@ -251,10 +392,11 @@
                     </div>
                 </div>
                 <div class="project-card">
+                    <span class="card-glare"></span>
                     <div class="project-image">
                         <img src="essentials/car.png" alt="Console-Rush">
                         <div class="project-links">
-                            <a href="https://github.com/Isha-Lama/Console-Rush" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://github.com/Isha-Lama/Console-Rush" target="_blank" rel="noopener" aria-label="Console-Rush on GitHub"><i class="fab fa-github"></i></a>
                             <a href="#" class="view-project">View Project</a>
                         </div>
                     </div>
@@ -270,61 +412,57 @@
                 </div>
             </div>
             <div class="view-all">
-                <a href="https://github.com/Isha-Lama" target="_blank" class="btn btn-primary">View All Projects</a>
+                <a href="https://github.com/Isha-Lama" target="_blank" rel="noopener" class="btn btn-primary">View All Projects</a>
             </div>
         </div>
     </section>
 
-    
-
-<section id="certifications" class="certifications">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">My <span>Certifications</span></h2>
-            <div class="section-divider"></div>
-            <p class="section-subtitle">Professional credentials that validate my expertise</p>
-        </div>
-        
-        <div class="certification-container">
-            <div class="certificate-image">
-                <img src="essentials/oracle.png" alt="Oracle Cloud Infrastructure 2025 Certified Generative AI Professional">
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-text="My Certifications">My <span>Certifications</span></h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Professional credentials that validate my expertise</p>
             </div>
-            
-            <div class="certificate-details">
-                <h3 class="certificate-title">Oracle Cloud Infrastructure 2025 Certified Generative AI Professional</h3>
-                <span class="certificate-issuer">Issued by Oracle</span>
-                
-                <p class="certificate-description">
-                    Validates expertise in Large Language Models (LLMs) and OCI Generative AI Service. 
-                    Demonstrates skills in Retrieval-Augmented Generation, Semantic Search, Vector databases, 
-                    and LangChain for building and deploying LLM applications.
-                </p>
-                
-                <div class="certificate-meta">
-                    <div class="meta-item">
-                        <i class="fas fa-calendar-alt"></i>
-                        <span>Expires: September 05, 2027</span>
-                    </div>
-                    
+
+            <div class="certification-container">
+                <span class="card-glare"></span>
+                <div class="certificate-image">
+                    <img src="essentials/oracle.png" alt="Oracle Cloud Infrastructure 2025 Certified Generative AI Professional">
                 </div>
-                
-                <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=E187557C0E1DBB11105031AA375A9F2582BA073BDC953142FDE92C5A66C370BF" 
-                   target="_blank" class="credential-link">
-                    <i class="fas fa-external-link-alt"></i> View Credential
-                </a>
+
+                <div class="certificate-details">
+                    <h3 class="certificate-title">Oracle Cloud Infrastructure 2025 Certified Generative AI Professional</h3>
+                    <span class="certificate-issuer">Issued by Oracle</span>
+
+                    <p class="certificate-description">
+                        Validates expertise in Large Language Models (LLMs) and OCI Generative AI Service.
+                        Demonstrates skills in Retrieval-Augmented Generation, Semantic Search, Vector databases,
+                        and LangChain for building and deploying LLM applications.
+                    </p>
+
+                    <div class="certificate-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Expires: September 05, 2027</span>
+                        </div>
+                    </div>
+
+                    <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=E187557C0E1DBB11105031AA375A9F2582BA073BDC953142FDE92C5A66C370BF"
+                       target="_blank" rel="noopener" class="credential-link">
+                        <i class="fas fa-external-link-alt"></i> View Credential
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-
-
-
+    </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Get In <span>Touch</span></h2>
+                <h2 class="section-title" data-text="Get In Touch">Get In <span>Touch</span></h2>
                 <div class="section-divider"></div>
                 <p class="section-subtitle">Feel free to reach out for collaborations or just a friendly hello :)</p>
             </div>
@@ -356,28 +494,32 @@
                         </div>
                     </div>
                     <div class="social-links">
-                        <a href="https://github.com/Isha-Lama/" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://github.com/Isha-Lama/" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 <form class="contact-form" action="https://formsubmit.co/lamaisha707@gmail.com" method="POST">
-  <div class="form-group">
-    <input type="text" name="name" placeholder="Your Name" required>
-  </div>
-  <div class="form-group">
-    <input type="email" name="email" placeholder="Your Email" required>
-  </div>
-  <div class="form-group">
-    <input type="text" name="subject" placeholder="Subject">
-  </div>
-  <div class="form-group">
-    <textarea name="message" placeholder="Your Message" required></textarea>
-  </div>
-  <button type="submit" class="btn btn-primary">Send Message</button>
-</form>
-
+                    <!-- FormSubmit configuration: delivers to lamaisha707@gmail.com -->
+                    <input type="hidden" name="_subject" value="New message from your portfolio">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="subject" placeholder="Subject">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
             </div>
         </div>
     </section>
@@ -410,13 +552,13 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; <script>document.write(new Date().getFullYear());</script> 
+                <p>&copy; <script>document.write(new Date().getFullYear());</script>
                     Isha Ghising. All rights reserved.</p>
                 <div class="footer-social">
-                    <a href="https://github.com/Isha-Lama/" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://github.com/Isha-Lama/" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
