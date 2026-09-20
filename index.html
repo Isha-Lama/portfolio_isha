@@ -4,17 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="Isha Ghising – Portfolio">
-<meta name="description" content="Personal website of Isha Ghising. Web developer, designer, and student. View projects, skills, and contact info.">
-<meta name="keywords" content="Isha, Isha Ghising, ishaghising, isha ghising, web developer, portfolio, student">
-<meta name="author" content="Isha Ghising">
-<meta name="robots" content="index, follow">
+    <meta name="description" content="Personal website of Isha Ghising. Web developer, designer, and student. View projects, skills, and contact info.">
+    <meta name="keywords" content="Isha, Isha Ghising, ishaghising, isha ghising, web developer, portfolio, student">
+    <meta name="author" content="Isha Ghising">
+    <meta name="robots" content="index, follow">
 
     <title>Isha Lama | Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- tsParticles engine for atmospheric background particles -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
 </head>
 <body>
+    <!-- Sky & Landscape Background Container -->
+<div class="sky-background">
+    <!-- DAY ELEMENTS -->
+    <div class="sun">
+        <div class="sun-rays"></div>
+    </div>
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+    <div class="greenery-landscape"></div>
+
+    <!-- NIGHT ELEMENTS -->
+    <div class="moon"></div>
+    <div class="meteor meteor-1"></div>
+    <div class="meteor meteor-2"></div>
+    <div class="meteor meteor-3"></div>
+    <div class="pine-trees-landscape"></div>
+</div>
+
+<!-- Particle Canvas Layer -->
+<div id="bg-canvas"></div>
+    <!-- Canvas container for particle effect -->
+    <div id="bg-canvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 0;"></div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
@@ -33,13 +60,13 @@
             </div>
 
             <div class="theme-toggle">
-    <input type="checkbox" id="theme-toggle-checkbox">
-    <label for="theme-toggle-checkbox" class="theme-toggle-label">
-        <i class="fas fa-moon"></i>
-        <i class="fas fa-sun"></i>
-        <span class="theme-toggle-ball"></span>
-    </label>
-</div>
+                <input type="checkbox" id="theme-toggle">
+                <label for="theme-toggle" class="theme-toggle-label">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                    <span class="theme-toggle-ball"></span>
+                </label>
+            </div>
         </div>
     </nav>
 
@@ -48,7 +75,7 @@
         <div class="container">
             <div class="hero-content">
                 <h1 class="hero-title">Hello, World! <br>It's <span>Isha Ghising</span></h1>
-                <h2 class="hero-subtitle"></h2> <!-- Empty element for the effect -->
+                <h2 class="hero-subtitle"><span id="typed-text"></span></h2> <!-- Dynamic typed text target -->
                 <p class="hero-description">Passionate about building engaging digital experiences through code and design.</p>
                 <div class="hero-buttons">
                     <a href="#projects" class="btn btn-primary">View My Work</a>
@@ -62,8 +89,6 @@
                     <img src="essentials/my.png" alt="Isha Lama" class="profile-img">
                 </div>
             </div>
-
-            
         </div>
         <div class="scroll-indicator">
             <span>Scroll Down</span>
@@ -105,105 +130,104 @@
                         </div>
                     </div>
                     <a href="essentials/cv.pdf" download="My_CV.pdf" class="btn btn-primary">Download CV</a>
-
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-<section id="skills" class="skills">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">My <span>Skills</span></h2>
-            <div class="section-divider"></div>
-            <p class="section-subtitle">Technologies I work with</p>
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">My <span>Skills</span></h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Technologies I work with</p>
+            </div>
+            
+            <div class="skills-cloud">
+                <!-- Programming Languages -->
+                <div class="skill-item" data-skill="JavaScript">
+                    <div class="skill-logo">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <span class="skill-name">JavaScript</span>
+                </div>
+                
+                <div class="skill-item" data-skill="Python">
+                    <div class="skill-logo">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <span class="skill-name">Python</span>
+                </div>
+                
+                <div class="skill-item" data-skill="C++">
+                    <div class="skill-logo">
+                        <i class="fas fa-file-code"></i>
+                    </div>
+                    <span class="skill-name">C++</span>
+                </div>
+                
+                <!-- Web Technologies -->
+                <div class="skill-item" data-skill="HTML5">
+                    <div class="skill-logo">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <span class="skill-name">HTML5</span>
+                </div>
+                
+                <div class="skill-item" data-skill="CSS3">
+                    <div class="skill-logo">
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <span class="skill-name">CSS3</span>
+                </div>
+                
+                <div class="skill-item" data-skill="React">
+                    <div class="skill-logo">
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <span class="skill-name">React</span>
+                </div>
+                
+                <div class="skill-item" data-skill="Node.js">
+                    <div class="skill-logo">
+                        <i class="fab fa-node-js"></i>
+                    </div>
+                    <span class="skill-name">Node.js</span>
+                </div>
+                
+                <!-- Databases -->
+                <div class="skill-item" data-skill="MongoDB">
+                    <div class="skill-logo">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <span class="skill-name">MongoDB</span>
+                </div>
+                
+                <div class="skill-item" data-skill="MySQL">
+                    <div class="skill-logo">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <span class="skill-name">MySQL</span>
+                </div>
+                
+                <!-- Tools & Design -->
+                <div class="skill-item" data-skill="Git">
+                    <div class="skill-logo">
+                        <i class="fab fa-git-alt"></i>
+                    </div>
+                    <span class="skill-name">Git</span>
+                </div>
+                
+                <div class="skill-item" data-skill="Figma">
+                    <div class="skill-logo">
+                        <i class="fab fa-figma"></i>
+                    </div>
+                    <span class="skill-name">Figma</span>
+                </div>
+            </div>
         </div>
-        
-        <div class="skills-cloud">
-            <!-- Programming Languages -->
-            <div class="skill-item" data-skill="JavaScript">
-                <div class="skill-logo">
-                    <i class="fab fa-js"></i>
-                </div>
-                <span class="skill-name">JavaScript</span>
-            </div>
-            
-            <div class="skill-item" data-skill="Python">
-                <div class="skill-logo">
-                    <i class="fab fa-python"></i>
-                </div>
-                <span class="skill-name">Python</span>
-            </div>
-            
-            <div class="skill-item" data-skill="C++">
-                <div class="skill-logo">
-                    <i class="fas fa-file-code"></i>
-                </div>
-                <span class="skill-name">C++</span>
-            </div>
-            
-            <!-- Web Technologies -->
-            <div class="skill-item" data-skill="HTML5">
-                <div class="skill-logo">
-                    <i class="fab fa-html5"></i>
-                </div>
-                <span class="skill-name">HTML5</span>
-            </div>
-            
-            <div class="skill-item" data-skill="CSS3">
-                <div class="skill-logo">
-                    <i class="fab fa-css3-alt"></i>
-                </div>
-                <span class="skill-name">CSS3</span>
-            </div>
-            
-            <div class="skill-item" data-skill="React">
-                <div class="skill-logo">
-                    <i class="fab fa-react"></i>
-                </div>
-                <span class="skill-name">React</span>
-            </div>
-            
-            <div class="skill-item" data-skill="Node.js">
-                <div class="skill-logo">
-                    <i class="fab fa-node-js"></i>
-                </div>
-                <span class="skill-name">Node.js</span>
-            </div>
-            
-            <!-- Databases -->
-            <div class="skill-item" data-skill="MongoDB">
-                <div class="skill-logo">
-                    <i class="fas fa-database"></i>
-                </div>
-                <span class="skill-name">MongoDB</span>
-            </div>
-            
-            <div class="skill-item" data-skill="MySQL">
-                <div class="skill-logo">
-                    <i class="fas fa-database"></i>
-                </div>
-                <span class="skill-name">MySQL</span>
-            </div>
-            
-            <!-- Tools & Design -->
-            <div class="skill-item" data-skill="Git">
-                <div class="skill-logo">
-                    <i class="fab fa-git-alt"></i>
-                </div>
-                <span class="skill-name">Git</span>
-            </div>
-            
-            <div class="skill-item" data-skill="Figma">
-                <div class="skill-logo">
-                    <i class="fab fa-figma"></i>
-                </div>
-                <span class="skill-name">Figma</span>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- Projects Section -->
     <section id="projects" class="projects">
@@ -275,50 +299,45 @@
         </div>
     </section>
 
-    
-
-<section id="certifications" class="certifications">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">My <span>Certifications</span></h2>
-            <div class="section-divider"></div>
-            <p class="section-subtitle">Professional credentials that validate my expertise</p>
-        </div>
-        
-        <div class="certification-container">
-            <div class="certificate-image">
-                <img src="essentials/oracle.png" alt="Oracle Cloud Infrastructure 2025 Certified Generative AI Professional">
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">My <span>Certifications</span></h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Professional credentials that validate my expertise</p>
             </div>
             
-            <div class="certificate-details">
-                <h3 class="certificate-title">Oracle Cloud Infrastructure 2025 Certified Generative AI Professional</h3>
-                <span class="certificate-issuer">Issued by Oracle</span>
-                
-                <p class="certificate-description">
-                    Validates expertise in Large Language Models (LLMs) and OCI Generative AI Service. 
-                    Demonstrates skills in Retrieval-Augmented Generation, Semantic Search, Vector databases, 
-                    and LangChain for building and deploying LLM applications.
-                </p>
-                
-                <div class="certificate-meta">
-                    <div class="meta-item">
-                        <i class="fas fa-calendar-alt"></i>
-                        <span>Expires: September 05, 2027</span>
-                    </div>
-                    
+            <div class="certification-container">
+                <div class="certificate-image">
+                    <img src="essentials/oracle.png" alt="Oracle Cloud Infrastructure 2025 Certified Generative AI Professional">
                 </div>
                 
-                <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=E187557C0E1DBB11105031AA375A9F2582BA073BDC953142FDE92C5A66C370BF" 
-                   target="_blank" class="credential-link">
-                    <i class="fas fa-external-link-alt"></i> View Credential
-                </a>
+                <div class="certificate-details">
+                    <h3 class="certificate-title">Oracle Cloud Infrastructure 2025 Certified Generative AI Professional</h3>
+                    <span class="certificate-issuer">Issued by Oracle</span>
+                    
+                    <p class="certificate-description">
+                        Validates expertise in Large Language Models (LLMs) and OCI Generative AI Service. 
+                        Demonstrates skills in Retrieval-Augmented Generation, Semantic Search, Vector databases, 
+                        and LangChain for building and deploying LLM applications.
+                    </p>
+                    
+                    <div class="certificate-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Expires: September 05, 2027</span>
+                        </div>
+                    </div>
+                    
+                    <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=E187557C0E1DBB11105031AA375A9F2582BA073BDC953142FDE92C5A66C370BF" 
+                       target="_blank" class="credential-link">
+                        <i class="fas fa-external-link-alt"></i> View Credential
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-
-
-
+    </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
@@ -363,21 +382,20 @@
                     </div>
                 </div>
                 <form class="contact-form" action="https://formsubmit.co/lamaisha707@gmail.com" method="POST">
-  <div class="form-group">
-    <input type="text" name="name" placeholder="Your Name" required>
-  </div>
-  <div class="form-group">
-    <input type="email" name="email" placeholder="Your Email" required>
-  </div>
-  <div class="form-group">
-    <input type="text" name="subject" placeholder="Subject">
-  </div>
-  <div class="form-group">
-    <textarea name="message" placeholder="Your Message" required></textarea>
-  </div>
-  <button type="submit" class="btn btn-primary">Send Message</button>
-</form>
-
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="subject" placeholder="Subject">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
             </div>
         </div>
     </section>

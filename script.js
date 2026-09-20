@@ -8,20 +8,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelector('.nav-links');
     const navItems = document.querySelectorAll('.nav-links li');
 
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        hamburger.classList.toggle('active');
-        document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
-    });
-
-    // Close menu when clicking a link
-    navItems.forEach(item => {
-        item.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            hamburger.classList.remove('active');
-            document.body.style.overflow = 'auto';
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
         });
-    });
+
+        // Close menu when clicking a link
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+    }
 
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -29,9 +31,11 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             
             // Close mobile menu if open
-            navLinks.classList.remove('active');
-            hamburger.classList.remove('active');
-            document.body.style.overflow = 'auto';
+            if (navLinks && hamburger) {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
             
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
@@ -51,8 +55,44 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // --- Particle Background Configuration ---
+    async function loadParticles(isDark) {
+        if (typeof tsParticles === 'undefined') return;
+        
+        await tsParticles.load("bg-canvas", {
+            background: {
+                color: { value: "transparent" }
+            },
+            fpsLimit: 60,
+            particles: {
+                color: { value: isDark ? "#64ffda" : "#0066cc" },
+                links: {
+                    color: isDark ? "#64ffda" : "#0066cc",
+                    distance: 150,
+                    enable: true,
+                    opacity: isDark ? 0.2 : 0.15,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 1.2,
+                    direction: "none",
+                    outModes: { default: "bounce" }
+                },
+                number: {
+                    density: { enable: true, area: 800 },
+                    value: 45
+                },
+                opacity: { value: isDark ? 0.3 : 0.4 },
+                shape: { type: "circle" },
+                size: { value: { min: 1, max: 3 } }
+            },
+            detectRetina: true
+        });
+    }
+
     // Theme toggle functionality
-    const themeToggle = document.getElementById('theme-toggle-checkbox');
+    const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
 
     // Check for saved user preference or system preference
@@ -60,12 +100,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
     // Apply the initial theme
-    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+    const isDarkMode = savedTheme === 'dark' || (!savedTheme && systemPrefersDark);
+    if (isDarkMode) {
         body.classList.add('dark-mode');
         if (themeToggle) themeToggle.checked = true;
     } else {
         body.classList.add('light-mode');
+        if (themeToggle) themeToggle.checked = false;
     }
+    loadParticles(isDarkMode);
 
     // Toggle theme when checkbox changes
     if (themeToggle) {
@@ -74,10 +117,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 body.classList.remove('light-mode');
                 body.classList.add('dark-mode');
                 localStorage.setItem('theme', 'dark');
+                loadParticles(true);
             } else {
                 body.classList.remove('dark-mode');
                 body.classList.add('light-mode');
                 localStorage.setItem('theme', 'light');
+                loadParticles(false);
             }
         });
     }
@@ -86,11 +131,15 @@ document.addEventListener('DOMContentLoaded', function() {
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
         if (!localStorage.getItem('theme')) {
             if (e.matches) {
+                body.classList.remove('light-mode');
                 body.classList.add('dark-mode');
                 if (themeToggle) themeToggle.checked = true;
+                loadParticles(true);
             } else {
                 body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
                 if (themeToggle) themeToggle.checked = false;
+                loadParticles(false);
             }
         }
     });
@@ -120,54 +169,49 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Typing effect for hero subtitle
-    const heroSubtitle = document.querySelector('.hero-subtitle');
+    const typedTextTarget = document.getElementById('typed-text') || document.querySelector('.hero-subtitle');
     const titles = [
         "Computer Science Student",
         "Web Developer", 
-       
         "Creative Coder"
     ];
     let titleIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
-    let typingSpeed = 100; // Adjust speed here (lower = faster)
+    let typingSpeed = 100;
 
     function typeWriter() {
+        if (!typedTextTarget) return;
         const currentTitle = titles[titleIndex];
         
         if (isDeleting) {
-            // Deleting phase
-            heroSubtitle.textContent = currentTitle.substring(0, charIndex - 1);
+            typedTextTarget.textContent = currentTitle.substring(0, charIndex - 1);
             charIndex--;
-            typingSpeed = 50; // Faster when deleting
+            typingSpeed = 50;
         } else {
-            // Typing phase
-            heroSubtitle.textContent = currentTitle.substring(0, charIndex + 1);
+            typedTextTarget.textContent = currentTitle.substring(0, charIndex + 1);
             charIndex++;
-            typingSpeed = 100; // Normal speed when typing
+            typingSpeed = 100;
         }
 
-        // Determine next action
         if (!isDeleting && charIndex === currentTitle.length) {
-            // Pause at end of typing
             isDeleting = true;
-            typingSpeed = 1500; // Pause before deleting
+            typingSpeed = 1500;
         } else if (isDeleting && charIndex === 0) {
-            // Move to next title
             isDeleting = false;
             titleIndex = (titleIndex + 1) % titles.length;
-            typingSpeed = 500; // Pause before typing next
+            typingSpeed = 500;
         }
 
         setTimeout(typeWriter, typingSpeed);
     }
 
-    // Start the effect when page loads
+    // Start typing effect when page loads
     window.addEventListener('load', () => {
-        setTimeout(typeWriter, 1000); // Initial delay
+        setTimeout(typeWriter, 1000);
     });
 
-    // Simple Intersection Observer for skills section
+    // Intersection Observer for skills section
     const skillsSection = document.querySelector('#skills');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -192,7 +236,6 @@ document.addEventListener('DOMContentLoaded', function() {
             entry.target.classList.remove('section-hidden');
             entry.target.classList.add('section-visible');
             
-            // Animate child elements with delays
             const aboutImage = entry.target.querySelector('.about-image');
             const aboutText = entry.target.querySelector('.about-text');
             const skillCategories = entry.target.querySelectorAll('.skill-category');
@@ -218,7 +261,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, 100);
             }
             
-            if (skillCategories) {
+            if (skillCategories.length > 0) {
                 skillCategories.forEach((category, index) => {
                     category.style.opacity = 0;
                     category.style.transform = 'translateY(30px)';
@@ -229,7 +272,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
             
-            if (projectCards) {
+            if (projectCards.length > 0) {
                 projectCards.forEach((card, index) => {
                     card.style.opacity = 0;
                     card.style.transform = 'scale(0.95)';
@@ -276,7 +319,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Certificate Modal functionality
     const certificateImage = document.querySelector('.certificate-image img');
     if (certificateImage) {
-        // Create modal element
         const modal = document.createElement('div');
         modal.className = 'certificate-modal';
         modal.innerHTML = `
@@ -287,36 +329,33 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         document.body.appendChild(modal);
         
-        // Get modal elements
         const modalImage = document.querySelector('.modal-image');
         const closeModal = document.querySelector('.close-modal');
         
-        // Open modal when certificate image is clicked
         certificateImage.addEventListener('click', function() {
             modalImage.src = this.src;
             modal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
+            document.body.style.overflow = 'hidden';
         });
         
-        // Close modal when X is clicked
-        closeModal.addEventListener('click', function() {
-            modal.classList.remove('active');
-            document.body.style.overflow = ''; // Re-enable scrolling
-        });
+        if (closeModal) {
+            closeModal.addEventListener('click', function() {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
         
-        // Close modal when clicking outside the image
         modal.addEventListener('click', function(e) {
             if (e.target === modal) {
                 modal.classList.remove('active');
-                document.body.style.overflow = ''; // Re-enable scrolling
+                document.body.style.overflow = '';
             }
         });
         
-        // Close modal with Escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && modal.classList.contains('active')) {
                 modal.classList.remove('active');
-                document.body.style.overflow = ''; // Re-enable scrolling
+                document.body.style.overflow = '';
             }
         });
     }
@@ -326,13 +365,11 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.classList.remove('loading');
         document.body.classList.add('loaded');
         
-        // Hero animation
         if (hero) {
             hero.style.opacity = 1;
             hero.style.transform = 'translateY(0)';
         }
         
-        // Hero content animations
         setTimeout(() => {
             if (heroContent) {
                 heroContent.style.opacity = 1;
@@ -346,7 +383,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 300);
     });
 
-    // Loading screen removal with delay
+    // Loading screen removal fallback
     setTimeout(() => {
         document.body.classList.remove('loading');
     }, 1000);
